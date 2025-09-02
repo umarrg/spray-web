@@ -87,6 +87,17 @@ const Icon3D = ({ Icon, size = 60, color }) => {
 export default function HomePage() {
   const router = useRouter()
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [particles, setParticles] = useState([])
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const arr = Array.from({ length: 30 }).map(() => ({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight
+      }))
+      setParticles(arr)
+    }
+  }, [])
   const [stats, setStats] = useState({
     totalEvents: 0,
     totalSprayed: 0,
@@ -187,27 +198,25 @@ export default function HomePage() {
 
       {/* Floating Particles */}
       <div className="fixed inset-0 pointer-events-none">
-        {[...Array(30)].map((_, i) => (
+        {particles.map((p, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-white/30 rounded-full"
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight
-            }}
+            initial={{ x: p.x, y: p.y }}
             animate={{
-              y: [null, -window.innerHeight],
+              y: [p.y, -100],
               opacity: [0, 1, 0]
             }}
             transition={{
               duration: Math.random() * 10 + 10,
               repeat: Infinity,
               delay: Math.random() * 10,
-              ease: 'linear'
+              ease: "linear"
             }}
           />
         ))}
       </div>
+
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4">
