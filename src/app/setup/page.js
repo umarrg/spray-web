@@ -303,7 +303,7 @@ export default function EventSetupPage() {
             </div>
 
             {/* Particles */}
-            <div className="fixed inset-0 pointer-events-none">
+            {/* <div className="fixed inset-0 pointer-events-none">
                 {[...Array(20)].map((_, i) => (
                     <motion.div
                         key={i}
@@ -313,7 +313,7 @@ export default function EventSetupPage() {
                         transition={{ duration: Math.random() * 15 + 10, repeat: Infinity, delay: Math.random() * 10 }}
                     />
                 ))}
-            </div>
+            </div> */}
 
             <div className="relative z-10 max-w-5xl mx-auto px-4 py-12">
                 {/* Header */}
