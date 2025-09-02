@@ -8,7 +8,6 @@ import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Card } from '@/components/ui/Card'
 import { toast } from 'sonner'
-import { formatCurrency } from '@/lib/utils/format'
 
 export default function PaymentPage() {
     const params = useParams()
@@ -346,7 +345,7 @@ export default function PaymentPage() {
                                 </motion.div>
                                 <h2 className="text-2xl font-bold text-gray-900 mb-2">Payment Successful!</h2>
                                 <p className="text-gray-600 mb-4">
-                                    Thank you for spraying {formatCurrency(parseFloat(formData.amount))}
+                                    Thank you for spraying formData.amount
                                 </p>
                                 <p className="text-sm text-gray-500">Your contribution will appear on the screen shortly</p>
                                 <div className="mt-4">
